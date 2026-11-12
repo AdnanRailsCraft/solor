@@ -9,23 +9,37 @@
 }
 
 :root {
-    --primary: #2563EB; /* Blue 600 */
-    --primary-dark: #1D4ED8; /* Blue 700 */
-    --secondary: #F1F5F9; /* Slate 100 */
-    --accent: #14B8A6; /* Teal 500 */
-    --highlight: #F59E0B; /* Amber 500 */
-    --background: #F8FAFC; /* Slate 50 */
+    --primary: #0F4C81; /* Deep Tech Blue (brand/structure) */
+    --primary-dark: #0A3A63;
+    --secondary: #E8EDF2; /* Light Gray */
+    --accent: #F59E0B; /* Solar Amber (primary accent) */
+    --highlight: #FFB703; /* Electric Gold */
+    --background: #F4F7F9; /* Cool Off-White (60%) */
     --surface: #ffffff; /* White surface */
-    --surface-hover: #F1F5F9; /* Slate 100 */
+    --surface-hover: #E8EDF2; /* Slate 100 */
     --text-primary: #0F172A; /* Slate 900 */
     --text-secondary: #475569; /* Slate 600 */
-    --border: #E2E8F0; /* Slate 200 */
+    --border: #CBD5E1; /* Slate 300 */
     --danger: #DC2626; /* Red 600 */
-    --sidebar-bg: #0F172A; /* Slate 900 */
+    --sidebar-bg: #1E293B; /* Deep Navy (structure) */
     --sidebar-text: #F8FAFC; /* Slate 50 */
     --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
     --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    --shadow-glow: 0 0 20px rgba(37, 99, 235, 0.12);
+    --shadow-glow: 0 0 20px rgba(15, 76, 129, 0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #0F172A; /* Deep Slate (60%) */
+        --surface: #1E293B; /* Navy surface */
+        --surface-hover: #334155;
+        --text-primary: #F8FAFC;
+        --text-secondary: #CBD5E1;
+        --border: #334155;
+        --sidebar-bg: #020617;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    }
+}
     --radius: 12px;
     --radius-sm: 6px;
     --radius-full: 9999px;
@@ -50,8 +64,8 @@ body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     background-image: 
-        radial-gradient(circle at 15% 50%, rgba(37, 99, 235, 0.04), transparent 25%),
-        radial-gradient(circle at 85% 30%, rgba(20, 184, 166, 0.04), transparent 25%);
+        radial-gradient(circle at 15% 50%, rgba(15, 76, 129, 0.04), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(245, 158, 11, 0.04), transparent 25%);
     background-attachment: fixed;
     animation: bgShift 20s ease-in-out infinite alternate;
 }
@@ -285,7 +299,7 @@ h1, h2, h3, h4, h5, h6, .app-title {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(37, 99, 235, 0.04), transparent 60%);
+    background: linear-gradient(135deg, rgba(15, 76, 129, 0.04), transparent 60%);
     pointer-events: none;
 }
 
