@@ -53,6 +53,12 @@ body {
         radial-gradient(circle at 15% 50%, rgba(30, 58, 138, 0.03), transparent 25%),
         radial-gradient(circle at 85% 30%, rgba(250, 204, 21, 0.03), transparent 25%);
     background-attachment: fixed;
+    animation: bgShift 20s ease-in-out infinite alternate;
+}
+
+@keyframes bgShift {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
 }
 
 h1, h2, h3, h4, h5, h6, .app-title {
@@ -269,12 +275,24 @@ h1, h2, h3, h4, h5, h6, .app-title {
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     padding: 32px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
     transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.03), transparent 60%);
+    pointer-events: none;
 }
 
 .card:hover {
-    border-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
 }
 
 .card-title {
