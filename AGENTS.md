@@ -6,36 +6,25 @@ Single-package Electron desktop app for solar equipment business management (inv
 
 ## Commands
 
-### Electron (legacy, still works)
 - Install: `npm install`
-- Run: `npm start` (alias `npm run dev`)
-- Build Windows installer: `npm run build` -> `dist/`
-- Unpacked build: `npm run pack`
-
-### Tauri / Rust (primary port)
-- Prereqs: Rust toolchain (MSVC or GNU) + Node 18+.
-- Dev: `npm run tauri:dev` (or `cargo tauri dev` in `src-tauri/`)
-- Build: `npm run tauri:build` -> `src-tauri/target/release/bundle/`
-- Rust build (dev): `cargo build` in `src-tauri/` (GNU toolchain works; MSVC needs Windows SDK)
+- Dev: `npm start` / `npm run dev` / `npm run tauri:dev`
+- Build: `npm run build` / `npm run tauri:build` -> `src-tauri/target/release/bundle/`
+- Rust build (dev): `cd src-tauri && cargo build`
 - No test/lint/typecheck scripts exist.
 
 Avoid `install.bat`/`run.bat`: they hardcode a stale path (`c:\Users\x\Desktop\inv\befirst-energy`) and will run in the wrong directory. Use the npm commands above.
 
-## Architecture (actual, not SPEC.md)
+## Architecture (actual)
 
-Dual-runtime: Electron (legacy) and Tauri/Rust (port in progress).
+Tauri 2 + Rust with the existing vanilla JS frontend preserved.
 
-Electron:
-- `main.js` — main process: sql.js database, all IPC handlers, PDF generation (PDFKit), window controls.
-- `preload.js` — context bridge exposing `window.electronAPI`.
-
-Shared frontend:
+Frontend:
 - `frontend/index.html` + `frontend/scripts/app.js` — single-page frontend.
 - `frontend/styles/*.css` — styling.
-- `frontend/tauri-bridge.js` — maps `window.electronAPI` to Tauri `invoke` when running under Tauri.
+- `frontend/tauri-bridge.js` — defines `window.electronAPI` mapping to Tauri `invoke` (Tauri-only now).
 
-Tauri/Rust:
-- `src-tauri/src/lib.rs` — commands + sql.js->rusqlite DB + PDF (printpdf).
+Rust backend:
+- `src-tauri/src/lib.rs` — commands + rusqlite DB + PDF (printpdf).
 - `src-tauri/tauri.conf.json` — config; `frontendDist: ../frontend`.
 - `src-tauri/icons/icon.ico` — required for Windows build.
 
