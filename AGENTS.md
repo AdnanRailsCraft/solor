@@ -6,20 +6,38 @@ Single-package Electron desktop app for solar equipment business management (inv
 
 ## Commands
 
+### Electron (legacy, still works)
 - Install: `npm install`
 - Run: `npm start` (alias `npm run dev`)
 - Build Windows installer: `npm run build` -> `dist/`
 - Unpacked build: `npm run pack`
+
+### Tauri / Rust (primary port)
+- Prereqs: Rust toolchain (MSVC or GNU) + Node 18+.
+- Dev: `npm run tauri:dev` (or `cargo tauri dev` in `src-tauri/`)
+- Build: `npm run tauri:build` -> `src-tauri/target/release/bundle/`
+- Rust build (dev): `cargo build` in `src-tauri/` (GNU toolchain works; MSVC needs Windows SDK)
 - No test/lint/typecheck scripts exist.
 
 Avoid `install.bat`/`run.bat`: they hardcode a stale path (`c:\Users\x\Desktop\inv\befirst-energy`) and will run in the wrong directory. Use the npm commands above.
 
 ## Architecture (actual, not SPEC.md)
 
+Dual-runtime: Electron (legacy) and Tauri/Rust (port in progress).
+
+Electron:
 - `main.js` — main process: sql.js database, all IPC handlers, PDF generation (PDFKit), window controls.
 - `preload.js` — context bridge exposing `window.electronAPI`.
-- `views/index.html` + `scripts/app.js` — single-page frontend.
-- `styles/*.css` — styling.
+
+Shared frontend:
+- `frontend/index.html` + `frontend/scripts/app.js` — single-page frontend.
+- `frontend/styles/*.css` — styling.
+- `frontend/tauri-bridge.js` — maps `window.electronAPI` to Tauri `invoke` when running under Tauri.
+
+Tauri/Rust:
+- `src-tauri/src/lib.rs` — commands + sql.js->rusqlite DB + PDF (printpdf).
+- `src-tauri/tauri.conf.json` — config; `frontendDist: ../frontend`.
+- `src-tauri/icons/icon.ico` — required for Windows build.
 
 `README.md`/`SPEC.md` are aspirational and inaccurate: there is no `better-sqlite3`, no `models/`, `controllers/`, or `database/db.js`. The DB is sql.js, persisted manually.
 
