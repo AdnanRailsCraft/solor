@@ -7,9 +7,10 @@
 .text-left { text-align: left; }
 .text-primary { color: var(--primary); }
 .text-secondary { color: var(--text-secondary); }
-.text-success { color: var(--secondary); }
+.text-success { color: #10b981; }
 .text-danger { color: var(--danger); }
-.text-warning { color: var(--accent); }
+.text-warning { color: var(--highlight); }
+.text-accent { color: var(--accent); }
 
 .mt-1 { margin-top: 8px; }
 .mt-2 { margin-top: 16px; }

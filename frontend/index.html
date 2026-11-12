@@ -51,7 +51,7 @@
         <main class="main-content">
             <!-- Header -->
             <header class="main-header">
-                <button class="menu-toggle" id="menuToggle"><i class="ph ph-list"></i></button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation"><i class="ph ph-list"></i></button>
                 <h2 class="page-title" id="pageTitle">Dashboard</h2>
                 <div class="header-actions">
                     <span class="current-date" id="currentDate"></span>
@@ -245,11 +245,11 @@
     </div>
 
     <!-- Product Modal -->
-    <div class="modal hidden" id="productModal">
+    <div class="modal hidden" id="productModal" role="dialog" aria-modal="true" aria-labelledby="productModalTitle">
         <div class="modal-content">
             <div class="modal-header">
                 <h3 id="productModalTitle"><i class="ph ph-package"></i> Add Product</h3>
-                <button class="modal-close" data-modal="productModal"><i class="ph ph-x"></i></button>
+                <button class="modal-close" aria-label="Close dialog" data-modal="productModal"><i class="ph ph-x"></i></button>
             </div>
             <form id="productForm">
                 <input type="hidden" id="productId">
@@ -302,11 +302,11 @@
     </div>
 
     <!-- Quotation Modal -->
-    <div class="modal hidden" id="quotationModal">
+    <div class="modal hidden" id="quotationModal" role="dialog" aria-modal="true" aria-labelledby="quotationModalTitle">
         <div class="modal-content modal-large">
             <div class="modal-header">
                 <h3 id="quotationModalTitle"><i class="ph ph-file-text"></i> New Quotation</h3>
-                <button class="modal-close" data-modal="quotationModal"><i class="ph ph-x"></i></button>
+                <button class="modal-close" aria-label="Close dialog" data-modal="quotationModal"><i class="ph ph-x"></i></button>
             </div>
             <form id="quotationForm">
                 <input type="hidden" id="quotationId">
@@ -396,11 +396,11 @@
     </div>
 
     <!-- Invoice Modal -->
-    <div class="modal hidden" id="invoiceModal">
+    <div class="modal hidden" id="invoiceModal" role="dialog" aria-modal="true" aria-labelledby="invoiceModalTitle">
         <div class="modal-content modal-large">
             <div class="modal-header">
                 <h3 id="invoiceModalTitle"><i class="ph ph-receipt"></i> New Invoice</h3>
-                <button class="modal-close" data-modal="invoiceModal"><i class="ph ph-x"></i></button>
+                <button class="modal-close" aria-label="Close dialog" data-modal="invoiceModal"><i class="ph ph-x"></i></button>
             </div>
             <form id="invoiceForm">
                 <input type="hidden" id="invoiceId">
@@ -490,11 +490,11 @@
     </div>
 
     <!-- Order Modal -->
-    <div class="modal hidden" id="orderModal">
+    <div class="modal hidden" id="orderModal" role="dialog" aria-modal="true" aria-labelledby="orderModalTitle">
         <div class="modal-content modal-large">
             <div class="modal-header">
                 <h3 id="orderModalTitle"><i class="ph ph-shopping-cart"></i> New Order</h3>
-                <button class="modal-close" data-modal="orderModal"><i class="ph ph-x"></i></button>
+                <button class="modal-close" aria-label="Close dialog" data-modal="orderModal"><i class="ph ph-x"></i></button>
             </div>
             <form id="orderForm">
                 <input type="hidden" id="orderId">
@@ -565,11 +565,11 @@
     </div>
 
     <!-- Confirm Modal -->
-    <div class="modal hidden" id="confirmModal">
+    <div class="modal hidden" id="confirmModal" role="dialog" aria-modal="true" aria-labelledby="confirmModalTitle">
         <div class="modal-content modal-small">
             <div class="modal-header">
-                <h3><i class="ph ph-warning-circle"></i> Confirm</h3>
-                <button class="modal-close" data-modal="confirmModal"><i class="ph ph-x"></i></button>
+                <h3 id="confirmModalTitle"><i class="ph ph-warning-circle"></i> Confirm</h3>
+                <button class="modal-close" aria-label="Close dialog" data-modal="confirmModal"><i class="ph ph-x"></i></button>
             </div>
             <div class="modal-body">
                 <p id="confirmMessage">Are you sure?</p>
@@ -586,7 +586,7 @@
     </div>
 
     <!-- Toast Container -->
-    <div class="toast-container" id="toastContainer"></div>
+    <div class="toast-container" id="toastContainer" role="status" aria-live="polite" aria-atomic="true"></div>
 
     <script src="./tauri-bridge.js"></script>
     <script src="./scripts/app.js"></script>

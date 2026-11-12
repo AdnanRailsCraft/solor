@@ -27,7 +27,7 @@
     border: 1px solid var(--border);
     border-radius: var(--radius-full);
     font-size: 14px;
-    background: rgba(15, 23, 42, 0.5);
+    background: #ffffff;
     color: var(--text-primary);
     cursor: pointer;
     transition: var(--transition);
@@ -36,8 +36,8 @@
 .filter-select:focus {
     outline: none;
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
-    background: rgba(15, 23, 42, 0.8);
+    box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.15);
+    background: #ffffff;
 }
 
 /* Product Grid */
@@ -48,8 +48,8 @@
 }
 
 .product-card {
-    background: rgba(30, 41, 59, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: #ffffff;
+    border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 24px;
     box-shadow: var(--shadow);
@@ -69,8 +69,8 @@
 .product-card:hover {
     box-shadow: var(--shadow-hover);
     transform: translateY(-4px);
-    background: rgba(30, 41, 59, 0.8);
-    border-color: rgba(255, 255, 255, 0.1);
+    background: var(--surface-hover);
+    border-color: var(--border);
 }
 
 .product-card-header {
@@ -91,12 +91,12 @@
 .product-category {
     display: inline-block;
     padding: 4px 12px;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--secondary);
     border-radius: var(--radius-full);
     font-size: 12px;
     font-weight: 500;
     color: var(--text-secondary);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border);
 }
 
 .product-details {
@@ -109,9 +109,9 @@
 .product-detail {
     text-align: center;
     padding: 16px;
-    background: rgba(15, 23, 42, 0.5);
+    background: var(--secondary);
     border-radius: var(--radius-sm);
-    border: 1px solid rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border);
 }
 
 .product-detail-label {
@@ -144,8 +144,8 @@
     letter-spacing: 0.5px;
 }
 
-.product-quantity.in-stock { background: rgba(16, 185, 129, 0.1); color: var(--secondary); border: 1px solid rgba(16, 185, 129, 0.2); }
-.product-quantity.low-stock { background: rgba(245, 158, 11, 0.1); color: var(--primary); border: 1px solid rgba(245, 158, 11, 0.2); }
+.product-quantity.in-stock { background: rgba(16, 185, 129, 0.1); color: #065f46; border: 1px solid rgba(16, 185, 129, 0.2); }
+.product-quantity.low-stock { background: rgba(245, 158, 11, 0.1); color: #92400e; border: 1px solid rgba(245, 158, 11, 0.2); }
 .product-quantity.out-of-stock { background: rgba(239, 68, 68, 0.1); color: var(--danger); border: 1px solid rgba(239, 68, 68, 0.2); }
 
 .product-actions {
@@ -153,7 +153,7 @@
     gap: 12px;
     margin-top: 20px;
     padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid var(--border);
 }
 
 .product-actions .btn {
@@ -178,7 +178,7 @@
     box-shadow: 0 0 10px currentColor;
 }
 
-.stock-indicator.in-stock { background: var(--secondary); color: var(--secondary); }
+.stock-indicator.in-stock { background: #10b981; color: #10b981; }
 .stock-indicator.low-stock { background: var(--primary); color: var(--primary); animation: pulse 2s infinite; }
 .stock-indicator.out-of-stock { background: var(--danger); color: var(--danger); }
 
@@ -197,8 +197,8 @@
 }
 
 .inventory-stat {
-    background: rgba(30, 41, 59, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: #ffffff;
+    border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 20px;
     display: flex;
@@ -210,7 +210,7 @@
 
 .inventory-stat:hover {
     transform: translateY(-2px);
-    border-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary);
 }
 
 .inventory-stat-icon {
