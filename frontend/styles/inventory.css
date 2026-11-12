@@ -1,0 +1,254 @@
+/* Inventory Styles - BEFIRST ENERGY SOLUTION */
+
+.inventory-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.inventory-title {
+    font-size: 24px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.inventory-filters {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.filter-select {
+    padding: 10px 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    font-size: 14px;
+    background: rgba(15, 23, 42, 0.5);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+    background: rgba(15, 23, 42, 0.8);
+}
+
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.product-card {
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.product-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 4px;
+    background: var(--border);
+    transition: var(--transition);
+}
+
+.product-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-4px);
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.product-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.product-name {
+    font-size: 18px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.product-category {
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-full);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.product-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.product-detail {
+    text-align: center;
+    padding: 16px;
+    background: rgba(15, 23, 42, 0.5);
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.product-detail-label {
+    font-size: 11px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.product-detail-value {
+    font-size: 20px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.product-detail-value.price {
+    color: var(--primary);
+    text-shadow: 0 0 10px rgba(245, 158, 11, 0.2);
+}
+
+.product-quantity {
+    text-align: center;
+    padding: 10px;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+.product-quantity.in-stock { background: rgba(16, 185, 129, 0.1); color: var(--secondary); border: 1px solid rgba(16, 185, 129, 0.2); }
+.product-quantity.low-stock { background: rgba(245, 158, 11, 0.1); color: var(--primary); border: 1px solid rgba(245, 158, 11, 0.2); }
+.product-quantity.out-of-stock { background: rgba(239, 68, 68, 0.1); color: var(--danger); border: 1px solid rgba(239, 68, 68, 0.2); }
+
+.product-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.product-actions .btn {
+    flex: 1;
+    justify-content: center;
+}
+
+/* Category Colors via top border */
+.category-solar-panel::before { background: var(--primary); box-shadow: 0 0 10px rgba(245, 158, 11, 0.5); }
+.category-inverter::before { background: var(--accent); box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); }
+.category-battery::before { background: var(--secondary); box-shadow: 0 0 10px rgba(16, 185, 129, 0.5); }
+.category-accessory::before { background: #a855f7; box-shadow: 0 0 10px rgba(168, 85, 247, 0.5); }
+
+/* Stock Indicator */
+.stock-indicator {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px currentColor;
+}
+
+.stock-indicator.in-stock { background: var(--secondary); color: var(--secondary); }
+.stock-indicator.low-stock { background: var(--primary); color: var(--primary); animation: pulse 2s infinite; }
+.stock-indicator.out-of-stock { background: var(--danger); color: var(--danger); }
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+}
+
+/* Inventory Stats */
+.inventory-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 32px;
+}
+
+.inventory-stat {
+    background: rgba(30, 41, 59, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.inventory-stat:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.inventory-stat-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.inventory-stat-icon.solar-panel { background: rgba(245, 158, 11, 0.15); color: var(--primary); }
+.inventory-stat-icon.inverter { background: rgba(59, 130, 246, 0.15); color: var(--accent); }
+.inventory-stat-icon.battery { background: rgba(16, 185, 129, 0.15); color: var(--secondary); }
+.inventory-stat-icon.accessory { background: rgba(168, 85, 247, 0.15); color: #a855f7; }
+
+.inventory-stat-info h4 {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.inventory-stat-info p {
+    font-size: 28px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .inventory-header { flex-direction: column; align-items: stretch; }
+    .inventory-filters { flex-wrap: wrap; }
+    .product-grid { grid-template-columns: 1fr; }
+    .product-details { grid-template-columns: 1fr; }
+}

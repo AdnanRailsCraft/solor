@@ -1,0 +1,28 @@
+[package]
+name = "befirst-energy-solution"
+version = "1.0.0"
+description = "BEFIRST ENERGY SOLUTION - Solar Equipment Business Desktop Application"
+authors = ["BEFIRST ENERGY"]
+edition = "2021"
+
+[lib]
+name = "app_lib"
+crate-type = ["rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-opener = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+rusqlite = { version = "0.32", features = ["bundled"] }
+chrono = "0.4"
+printpdf = "0.7"
+log = "0.4"
+env_logger = "0.11"
+
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]

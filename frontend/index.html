@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com https://unpkg.com; img-src 'self' data: https:;">
+    <title>BEFIRST ENERGY SOLUTION</title>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/dashboard.css">
+    <link rel="stylesheet" href="./styles/inventory.css">
+    <link rel="stylesheet" href="./styles/common.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h1 class="app-title">BEFIRST</h1>
+                <p class="app-subtitle">ENERGY SOLUTION</p>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-page="dashboard">
+                    <span class="nav-icon"><i class="ph ph-squares-four"></i></span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" data-page="inventory">
+                    <span class="nav-icon"><i class="ph ph-package"></i></span>
+                    <span class="nav-text">Inventory</span>
+                </a>
+                <a href="#" class="nav-item" data-page="quotations">
+                    <span class="nav-icon"><i class="ph ph-file-text"></i></span>
+                    <span class="nav-text">Quotations</span>
+                </a>
+                <a href="#" class="nav-item" data-page="invoices">
+                    <span class="nav-icon"><i class="ph ph-receipt"></i></span>
+                    <span class="nav-text">Invoices</span>
+                </a>
+                <a href="#" class="nav-item" data-page="orders">
+                    <span class="nav-icon"><i class="ph ph-shopping-cart"></i></span>
+                    <span class="nav-text">Orders</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <p>© 2026 BEFIRST ENERGY</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="main-header">
+                <button class="menu-toggle" id="menuToggle"><i class="ph ph-list"></i></button>
+                <h2 class="page-title" id="pageTitle">Dashboard</h2>
+                <div class="header-actions">
+                    <span class="current-date" id="currentDate"></span>
+                </div>
+            </header>
+
+            <!-- Content Pages -->
+            <div class="content-area" id="contentArea">
+                <!-- Dashboard Page -->
+                <div class="page" id="dashboardPage">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="ph ph-package"></i></div>
+                            <div class="stat-info">
+                                <h3>Total Products</h3>
+                                <p class="stat-value" id="totalProducts">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card warning">
+                            <div class="stat-icon"><i class="ph ph-warning"></i></div>
+                            <div class="stat-info">
+                                <h3>Low Stock Items</h3>
+                                <p class="stat-value" id="lowStockCount">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card success">
+                            <div class="stat-icon"><i class="ph ph-currency-dollar"></i></div>
+                            <div class="stat-info">
+                                <h3>Total Sales</h3>
+                                <p class="stat-value" id="totalSales">$0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card info">
+                            <div class="stat-icon"><i class="ph ph-clipboard-text"></i></div>
+                            <div class="stat-info">
+                                <h3>Pending Orders</h3>
+                                <p class="stat-value" id="pendingOrders">0</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <div class="card">
+                            <h3 class="card-title">Low Stock Alert</h3>
+                            <div class="card-content">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Product</th>
+                                            <th>Category</th>
+                                            <th>Quantity</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="lowStockTable">
+                                        <tr><td colspan="3">No low stock items</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h3 class="card-title">Recent Transactions</h3>
+                            <div class="card-content">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Type</th>
+                                            <th>Number</th>
+                                            <th>Customer</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="recentTransactions">
+                                        <tr><td colspan="4">No recent transactions</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inventory Page -->
+                <div class="page hidden" id="inventoryPage">
+                    <div class="page-header">
+                        <button class="btn btn-primary" id="addProductBtn">
+                            <i class="ph ph-plus-circle"></i> Add Product
+                        </button>
+                        <div class="search-box">
+                            <i class="ph ph-magnifying-glass search-icon"></i>
+                            <input type="text" id="productSearch" placeholder="Search products...">
+                        </div>
+                    </div>
+                    <div class="card">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>Cost Price</th>
+                                    <th>Selling Price</th>
+                                    <th>Quantity</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productTable">
+                                <tr><td colspan="7">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Quotations Page -->
+                <div class="page hidden" id="quotationsPage">
+                    <div class="page-header">
+                        <button class="btn btn-primary" id="addQuotationBtn">
+                            <i class="ph ph-plus-circle"></i> New Quotation
+                        </button>
+                    </div>
+                    <div class="card">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Customer</th>
+                                    <th>Date</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="quotationTable">
+                                <tr><td colspan="6">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Invoices Page -->
+                <div class="page hidden" id="invoicesPage">
+                    <div class="page-header">
+                        <button class="btn btn-primary" id="addInvoiceBtn">
+                            <i class="ph ph-plus-circle"></i> New Invoice
+                        </button>
+                    </div>
+                    <div class="card">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Invoice #</th>
+                                    <th>Customer</th>
+                                    <th>Date</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="invoiceTable">
+                                <tr><td colspan="6">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Orders Page -->
+                <div class="page hidden" id="ordersPage">
+                    <div class="page-header">
+                        <button class="btn btn-primary" id="addOrderBtn">
+                            <i class="ph ph-plus-circle"></i> New Order
+                        </button>
+                    </div>
+                    <div class="card">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Order #</th>
+                                    <th>Customer</th>
+                                    <th>Date</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="orderTable">
+                                <tr><td colspan="6">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Product Modal -->
+    <div class="modal hidden" id="productModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="productModalTitle"><i class="ph ph-package"></i> Add Product</h3>
+                <button class="modal-close" data-modal="productModal"><i class="ph ph-x"></i></button>
+            </div>
+            <form id="productForm">
+                <input type="hidden" id="productId">
+                <div class="form-section">
+                    <h4><i class="ph ph-info"></i> Basic Information</h4>
+                    <div class="form-group">
+                        <label for="productName">Product Name *</label>
+                        <input type="text" id="productName" placeholder="Enter product name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="productCategory">Category *</label>
+                        <select id="productCategory" required>
+                            <option value="">Select Category</option>
+                            <option value="Solar Panel">Solar Panel</option>
+                            <option value="Inverter">Inverter</option>
+                            <option value="Battery">Battery</option>
+                            <option value="Accessory">Accessory</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h4><i class="ph ph-currency-dollar"></i> Pricing & Stock</h4>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="costPrice">Cost Price *</label>
+                            <input type="number" id="costPrice" step="0.01" min="0" placeholder="0.00" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="sellingPrice">Selling Price *</label>
+                            <input type="number" id="sellingPrice" step="0.01" min="0" placeholder="0.00" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="productQuantity">Stock Quantity *</label>
+                        <input type="number" id="productQuantity" min="0" placeholder="Enter quantity" required>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" data-modal="productModal">
+                        <i class="ph ph-x-circle"></i> Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="ph ph-floppy-disk"></i> Save Product
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Quotation Modal -->
+    <div class="modal hidden" id="quotationModal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3 id="quotationModalTitle"><i class="ph ph-file-text"></i> New Quotation</h3>
+                <button class="modal-close" data-modal="quotationModal"><i class="ph ph-x"></i></button>
+            </div>
+            <form id="quotationForm">
+                <input type="hidden" id="quotationId">
+                <div class="form-section">
+                    <h4><i class="ph ph-user-circle"></i> Customer Information</h4>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="customerName">Customer Name *</label>
+                            <input type="text" id="customerName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customerPhone">Phone</label>
+                            <input type="tel" id="customerPhone">
+                        </div>
+                        <div class="form-group">
+                            <label for="customerEmail">Email</label>
+                            <input type="email" id="customerEmail">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-section">
+                    <h4><i class="ph ph-shopping-cart-simple"></i> Products</h4>
+                    <div class="product-selector">
+                        <div class="form-group">
+                            <label>Select Product</label>
+                            <select id="productSelect">
+                                <option value="">Select a product</option>
+                            </select>
+                        </div>
+                        <div class="form-group custom-product-fields">
+                            <label>Or Custom Name</label>
+                            <input type="text" id="customProductName" placeholder="Custom product name">
+                        </div>
+                        <div class="form-group custom-product-fields">
+                            <label>Price</label>
+                            <input type="number" id="customProductPrice" min="0" step="0.01" placeholder="0.00">
+                        </div>
+                        <div class="form-group">
+                            <label>Quantity</label>
+                            <input type="number" id="itemQuantity" min="1" value="1" placeholder="Qty">
+                        </div>
+                        <button type="button" class="btn btn-accent" id="addItemBtn">
+                            <i class="ph ph-plus"></i> Add
+                        </button>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Qty</th>
+                                <th>Total</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="quotationItems">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="form-section totals-section">
+                    <div class="totals">
+                        <div class="total-row">
+                            <span>Subtotal:</span>
+                            <span id="quotationSubtotal">$0.00</span>
+                        </div>
+                        <div class="total-row">
+                            <span>Tax (%):</span>
+                            <input type="number" id="quotationTaxRate" value="10" min="0" step="0.1" style="width: 60px; padding: 4px; border: 1px solid var(--border-color); border-radius: 4px;">
+                            <span id="quotationTax">$0.00</span>
+                        </div>
+                        <div class="total-row total-final">
+                            <span>Total:</span>
+                            <span id="quotationTotal">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" data-modal="quotationModal">
+                        <i class="ph ph-x-circle"></i> Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="ph ph-check-circle"></i> Save Quotation
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Invoice Modal -->
+    <div class="modal hidden" id="invoiceModal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3 id="invoiceModalTitle"><i class="ph ph-receipt"></i> New Invoice</h3>
+                <button class="modal-close" data-modal="invoiceModal"><i class="ph ph-x"></i></button>
+            </div>
+            <form id="invoiceForm">
+                <input type="hidden" id="invoiceId">
+                <div class="form-section">
+                    <h4><i class="ph ph-user-circle"></i> Customer Information</h4>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="invoiceCustomerName">Customer Name *</label>
+                            <input type="text" id="invoiceCustomerName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="invoiceCustomerPhone">Phone</label>
+                            <input type="tel" id="invoiceCustomerPhone">
+                        </div>
+                        <div class="form-group">
+                            <label for="invoiceCustomerEmail">Email</label>
+                            <input type="email" id="invoiceCustomerEmail">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-section">
+                    <h4><i class="ph ph-shopping-cart-simple"></i> Products</h4>
+                    <div class="product-selector">
+                        <div class="form-group">
+                            <label>Select Product</label>
+                            <select id="invoiceProductSelect">
+                                <option value="">Select a product</option>
+                            </select>
+                        </div>
+                        <div class="form-group custom-product-fields">
+                            <label>Or Custom Name</label>
+                            <input type="text" id="invoiceCustomProductName" placeholder="Custom name">
+                        </div>
+                        <div class="form-group custom-product-fields">
+                            <label>Price</label>
+                            <input type="number" id="invoiceCustomProductPrice" min="0" step="0.01" placeholder="0.00">
+                        </div>
+                        <div class="form-group">
+                            <label>Quantity</label>
+                            <input type="number" id="invoiceItemQuantity" min="1" value="1" placeholder="Qty">
+                        </div>
+                        <button type="button" class="btn btn-accent" id="invoiceAddItemBtn">
+                            <i class="ph ph-plus"></i> Add
+                        </button>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Qty</th>
+                                <th>Total</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="invoiceItems">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="form-section totals-section">
+                    <div class="totals">
+                        <div class="total-row">
+                            <span>Subtotal:</span>
+                            <span id="invoiceSubtotal">$0.00</span>
+                        </div>
+                        <div class="total-row">
+                            <span>Tax (%):</span>
+                            <input type="number" id="invoiceTaxRate" value="10" min="0" step="0.1" style="width: 60px; padding: 4px; border: 1px solid var(--border-color); border-radius: 4px;">
+                            <span id="invoiceTax">$0.00</span>
+                        </div>
+                        <div class="total-row total-final">
+                            <span>Total:</span>
+                            <span id="invoiceTotal">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" data-modal="invoiceModal">
+                        <i class="ph ph-x-circle"></i> Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="ph ph-check-circle"></i> Save Invoice
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Order Modal -->
+    <div class="modal hidden" id="orderModal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3 id="orderModalTitle"><i class="ph ph-shopping-cart"></i> New Order</h3>
+                <button class="modal-close" data-modal="orderModal"><i class="ph ph-x"></i></button>
+            </div>
+            <form id="orderForm">
+                <input type="hidden" id="orderId">
+                <div class="form-section">
+                    <h4><i class="ph ph-user-circle"></i> Customer Information</h4>
+                    <div class="form-group">
+                        <label for="orderCustomerName">Customer Name *</label>
+                        <input type="text" id="orderCustomerName" required>
+                    </div>
+                </div>
+                <div class="form-section">
+                    <h4><i class="ph ph-shopping-cart-simple"></i> Products</h4>
+                    <div class="product-selector">
+                        <div class="form-group">
+                            <label>Select Product</label>
+                            <select id="orderProductSelect">
+                                <option value="">Select a product</option>
+                            </select>
+                        </div>
+                        <div class="form-group custom-product-fields">
+                            <label>Or Custom Name</label>
+                            <input type="text" id="orderCustomProductName" placeholder="Custom name">
+                        </div>
+                        <div class="form-group custom-product-fields">
+                            <label>Price</label>
+                            <input type="number" id="orderCustomProductPrice" min="0" step="0.01" placeholder="0.00">
+                        </div>
+                        <div class="form-group">
+                            <label>Quantity</label>
+                            <input type="number" id="orderItemQuantity" min="1" value="1" placeholder="Qty">
+                        </div>
+                        <button type="button" class="btn btn-accent" id="orderAddItemBtn">
+                            <i class="ph ph-plus"></i> Add
+                        </button>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Qty</th>
+                                <th>Total</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orderItems">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="form-section totals-section">
+                    <div class="totals">
+                        <div class="total-row total-final">
+                            <span>Total:</span>
+                            <span id="orderTotal">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" data-modal="orderModal">
+                        <i class="ph ph-x-circle"></i> Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="ph ph-check-circle"></i> Save Order
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Confirm Modal -->
+    <div class="modal hidden" id="confirmModal">
+        <div class="modal-content modal-small">
+            <div class="modal-header">
+                <h3><i class="ph ph-warning-circle"></i> Confirm</h3>
+                <button class="modal-close" data-modal="confirmModal"><i class="ph ph-x"></i></button>
+            </div>
+            <div class="modal-body">
+                <p id="confirmMessage">Are you sure?</p>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" data-modal="confirmModal">
+                    <i class="ph ph-x-circle"></i> Cancel
+                </button>
+                <button type="button" class="btn btn-danger" id="confirmBtn">
+                    <i class="ph ph-trash"></i> Delete
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="./tauri-bridge.js"></script>
+    <script src="./scripts/app.js"></script>
+</body>
+</html>
