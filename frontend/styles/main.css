@@ -9,23 +9,23 @@
 }
 
 :root {
-    --primary: #1E3A8A; /* Deep Blue */
-    --primary-dark: #1e3a8a; /* Deep Blue */
-    --secondary: #F8FAFC; /* Light Gray */
-    --accent: #FACC15; /* Golden Yellow */
-    --highlight: #F97316; /* Orange */
-    --background: #F8FAFC; /* Light Gray - using as background since app should be light/cleaner? */
+    --primary: #2563EB; /* Blue 600 */
+    --primary-dark: #1D4ED8; /* Blue 700 */
+    --secondary: #F1F5F9; /* Slate 100 */
+    --accent: #14B8A6; /* Teal 500 */
+    --highlight: #F59E0B; /* Amber 500 */
+    --background: #F8FAFC; /* Slate 50 */
     --surface: #ffffff; /* White surface */
-    --surface-hover: #f1f5f9; /* Slate 100 */
-    --text-primary: #111827; /* Dark Gray */
-    --text-secondary: #4b5563; /* Gray 600 */
-    --border: #e2e8f0; /* Slate 200 */
-    --danger: #ef4444; /* Red 500 */
-    --sidebar-bg: #1E3A8A; /* Deep Blue */
-    --sidebar-text: #ffffff;
-    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --surface-hover: #F1F5F9; /* Slate 100 */
+    --text-primary: #0F172A; /* Slate 900 */
+    --text-secondary: #475569; /* Slate 600 */
+    --border: #E2E8F0; /* Slate 200 */
+    --danger: #DC2626; /* Red 600 */
+    --sidebar-bg: #0F172A; /* Slate 900 */
+    --sidebar-text: #F8FAFC; /* Slate 50 */
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
     --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    --shadow-glow: 0 0 20px rgba(30, 58, 138, 0.1);
+    --shadow-glow: 0 0 20px rgba(37, 99, 235, 0.12);
     --radius: 12px;
     --radius-sm: 6px;
     --radius-full: 9999px;
@@ -50,8 +50,8 @@ body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     background-image: 
-        radial-gradient(circle at 15% 50%, rgba(30, 58, 138, 0.03), transparent 25%),
-        radial-gradient(circle at 85% 30%, rgba(250, 204, 21, 0.03), transparent 25%);
+        radial-gradient(circle at 15% 50%, rgba(37, 99, 235, 0.04), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(20, 184, 166, 0.04), transparent 25%);
     background-attachment: fixed;
     animation: bgShift 20s ease-in-out infinite alternate;
 }
@@ -285,7 +285,7 @@ h1, h2, h3, h4, h5, h6, .app-title {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(30, 58, 138, 0.03), transparent 60%);
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.04), transparent 60%);
     pointer-events: none;
 }
 

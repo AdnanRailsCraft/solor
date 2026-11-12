@@ -132,7 +132,7 @@
 
 .product-detail-value.price {
     color: var(--primary);
-    text-shadow: 0 0 10px rgba(245, 158, 11, 0.2);
+    text-shadow: 0 0 10px rgba(37, 99, 235, 0.2);
 }
 
 .product-quantity {
@@ -145,7 +145,7 @@
 }
 
 .product-quantity.in-stock { background: rgba(16, 185, 129, 0.1); color: #065f46; border: 1px solid rgba(16, 185, 129, 0.2); }
-.product-quantity.low-stock { background: rgba(245, 158, 11, 0.1); color: #92400e; border: 1px solid rgba(245, 158, 11, 0.2); }
+.product-quantity.low-stock { background: rgba(37, 99, 235, 0.1); color: #92400e; border: 1px solid rgba(37, 99, 235, 0.2); }
 .product-quantity.out-of-stock { background: rgba(239, 68, 68, 0.1); color: var(--danger); border: 1px solid rgba(239, 68, 68, 0.2); }
 
 .product-actions {
@@ -162,8 +162,8 @@
 }
 
 /* Category Colors via top border */
-.category-solar-panel::before { background: var(--primary); box-shadow: 0 0 10px rgba(245, 158, 11, 0.5); }
-.category-inverter::before { background: var(--accent); box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); }
+.category-solar-panel::before { background: var(--primary); box-shadow: 0 0 10px rgba(37, 99, 235, 0.5); }
+.category-inverter::before { background: var(--accent); box-shadow: 0 0 10px rgba(20, 184, 166, 0.5); }
 .category-battery::before { background: var(--secondary); box-shadow: 0 0 10px rgba(16, 185, 129, 0.5); }
 .category-accessory::before { background: #a855f7; box-shadow: 0 0 10px rgba(168, 85, 247, 0.5); }
 
@@ -183,9 +183,9 @@
 .stock-indicator.out-of-stock { background: var(--danger); color: var(--danger); }
 
 @keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
-    70% { box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+    0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
 }
 
 /* Inventory Stats */
@@ -223,8 +223,8 @@
     font-size: 24px;
 }
 
-.inventory-stat-icon.solar-panel { background: rgba(245, 158, 11, 0.15); color: var(--primary); }
-.inventory-stat-icon.inverter { background: rgba(59, 130, 246, 0.15); color: var(--accent); }
+.inventory-stat-icon.solar-panel { background: rgba(37, 99, 235, 0.15); color: var(--primary); }
+.inventory-stat-icon.inverter { background: rgba(20, 184, 166, 0.15); color: var(--accent); }
 .inventory-stat-icon.battery { background: rgba(16, 185, 129, 0.15); color: var(--secondary); }
 .inventory-stat-icon.accessory { background: rgba(168, 85, 247, 0.15); color: #a855f7; }
 
